@@ -1,6 +1,6 @@
 {
    "name": "ts-mapper",
-   "version": "1.0.3",
+   "version": "1.0.5",
    "description": "Object mapper for TypeScript",
    "main": "./core/typemapper.ts",
    "scripts": {},

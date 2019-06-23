@@ -14,7 +14,7 @@ export class TypeMapper implements ITypeMapper {
       return mapping;
    }
 
-   map<ISource, IDest>(source: ISource, destination: { new (): IDest }): { new (): IDest } {
+   map<ISource, IDest>(source: ISource, destination: IDest): IDest {
       const [mapping] = this.mappings;
 
       const i = mapping as Mapping<ISource, IDest>;
@@ -37,7 +37,7 @@ export class TypeMapper implements ITypeMapper {
       return destination;
    }
 
-   mapCollection<ISource, IDest>(sources: ISource[], destinations: { new (): IDest }): any {
-      return sources.map((source: ISource) => this.map(source, destinations));
+   mapCollection<ISource, IDest>(sources: ISource[], destination: IDest): any {
+      return sources.map((source: ISource) => this.map(source, destination));
    }
 }
