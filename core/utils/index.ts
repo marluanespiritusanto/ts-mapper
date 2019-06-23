@@ -1,8 +1,12 @@
 import { Types } from "../enums/types.enum";
 
 export const getKeyFromPredicate = (predicate: Function): string => {
-   const splitted = /\.([^\.;]+);?\s*\}$/.exec(predicate.toString());
-   return splitted && splitted.length > 1 ? splitted[1] : "";
+   const array = predicate.toString().split(".");
+   const splitted = array[array.length - 1];
+   if (splitted.includes(";")) {
+      return splitted.substr(0, splitted.indexOf(";"));
+   }
+   return splitted;
 };
 
 export const toType = (type: Types, value: any = "") => {

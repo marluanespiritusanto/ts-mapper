@@ -1,8 +1,14 @@
 {
    "compilerOptions": {
       "target": "es5",
+      "lib": ["es2017", "es2015", "dom", "es6"],
       "module": "commonjs",
-      "outDir": "out",
-      "sourceMap": true
-   }
+      "outDir": "dist",
+      "sourceMap": true,
+      "strict": true,
+      "typeRoots": ["typings"],
+      "declaration": true,
+      "esModuleInterop": true
+   },
+   "exclude": ["node_modules", "dist"]
 }
