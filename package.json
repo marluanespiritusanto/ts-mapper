@@ -1,21 +1,21 @@
 {
-   "name": "ts-mapper",
-   "version": "1.0.11",
-   "description": "Object mapper for TypeScript",
-   "scripts": {},
-   "author": "Marluan Espiritusanto",
-   "license": "ISC",
-   "main": "./dist/core/typemapper.js",
-   "types": "./dist/core/typemapper.d.ts",
-   "directories": {
-      "lib": "dist"
-   },
-   "keywords": [
-      "typescript",
-      "nodejs",
-      "mapper",
-      "automapper",
-      "typemapper",
-      "javascript"
-   ]
+  "name": "ts-mapper",
+  "version": "1.1.5",
+  "description": "Object mapper for TypeScript",
+  "scripts": {},
+  "author": "Marluan Espiritusanto",
+  "license": "ISC",
+  "main": "./dist/core/typemapper.js",
+  "types": "./dist/core/typemapper.d.ts",
+  "directories": {
+    "lib": "dist"
+  },
+  "keywords": [
+    "typescript",
+    "nodejs",
+    "mapper",
+    "automapper",
+    "typemapper",
+    "javascript"
+  ]
 }

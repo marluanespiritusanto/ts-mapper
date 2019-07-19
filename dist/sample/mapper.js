@@ -22,7 +22,7 @@ var Mapper = /** @class */ (function (_super) {
         return _this;
     }
     Mapper.prototype.config = function () {
-        this.createMap().map(function (p) { return p.name; }, function (p) { return p.name; });
+        this.createMap("Animal", "AnimalDto").map(function (p) { return p.name; }, function (p) { return p.name; });
     };
     return Mapper;
 }(typemapper_1.TypeMapper));

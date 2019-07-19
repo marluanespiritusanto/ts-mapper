@@ -2,30 +2,37 @@ import { IMapping, IMappingItems } from "./interfaces/typemapper.interface";
 import { Types } from "./enums/types.enum";
 
 class Mapping<ISource, IDest> implements IMapping<ISource, IDest> {
-   items: IMappingItems[] = [];
+  items: IMappingItems[] = [];
 
-   private get lastItem(): IMappingItems {
-      return this.items[this.items.length - 1];
-   }
+  constructor(public source: string, public dest: string) {}
 
-   map(source: (type: ISource) => any, destination: (type: IDest) => any): IMapping<ISource, IDest> {
-      this.items.push({
-         destinationPredicate: destination,
-         sourcePredicate: source
-      });
+  private get lastItem(): IMappingItems {
+    return this.items[this.items.length - 1];
+  }
 
-      return this;
-   }
+  map(
+    source: (type: ISource) => any,
+    destination: (type: IDest) => any
+  ): IMapping<ISource, IDest> {
+    this.items.push({
+      destinationPredicate: destination,
+      sourcePredicate: source
+    });
 
-   conditions = (check: (s: ISource, d?: IDest) => boolean): IMapping<ISource, IDest> => {
-      this.lastItem.check = check;
-      return this;
-   };
+    return this;
+  }
 
-   is(type: Types): IMapping<ISource, IDest> {
-      this.lastItem.type = type;
-      return this;
-   }
+  conditions = (
+    check: (s: ISource, d?: IDest) => boolean
+  ): IMapping<ISource, IDest> => {
+    this.lastItem.check = check;
+    return this;
+  };
+
+  is(type: Types): IMapping<ISource, IDest> {
+    this.lastItem.type = type;
+    return this;
+  }
 }
 
 export default Mapping;

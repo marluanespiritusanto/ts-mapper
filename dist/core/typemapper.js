@@ -10,14 +10,15 @@ var TypeMapper = /** @class */ (function () {
     function TypeMapper() {
         this.mappings = [];
     }
-    TypeMapper.prototype.createMap = function () {
-        var mapping = new mapping_1.default();
+    TypeMapper.prototype.createMap = function (source, dest) {
+        var mapping = new mapping_1.default(source, dest);
         this.mappings.push(mapping);
-        console.log("Create map");
         return mapping;
     };
     TypeMapper.prototype.map = function (source, destination) {
-        var mapping = this.mappings[0];
+        var src = source.constructor.name;
+        var dst = destination.constructor.name;
+        var mapping = this.mappings.filter(function (map) { return map.source === src && map.dest === dst; })[0];
         var i = mapping;
         var items = i.items;
         for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {

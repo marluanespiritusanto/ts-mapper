@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Mapping = /** @class */ (function () {
-    function Mapping() {
+    function Mapping(source, dest) {
         var _this = this;
+        this.source = source;
+        this.dest = dest;
         this.items = [];
         this.conditions = function (check) {
             _this.lastItem.check = check;
