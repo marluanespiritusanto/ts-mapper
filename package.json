@@ -2,7 +2,10 @@
   "name": "ts-mapper",
   "version": "1.1.5",
   "description": "Object mapper for TypeScript",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "sample": "tsc && node ./dist/sample/main.js"
+  },
   "author": "Marluan Espiritusanto",
   "license": "ISC",
   "main": "./dist/core/typemapper.js",
