@@ -39,6 +39,15 @@ var TypeMapper = /** @class */ (function () {
         var _this = this;
         return sources.map(function (source) { return _this.map(source, destination); });
     };
+    TypeMapper.prototype.mapTo = function (source, destConstructor) {
+        var destination = new destConstructor();
+        return this.map(source, destination);
+    };
+    TypeMapper.prototype.mapCollectionTo = function (sources, destConstructor) {
+        var _this = this;
+        var destination = new destConstructor();
+        return sources.map(function (source) { return _this.map(source, destination); });
+    };
     return TypeMapper;
 }());
 exports.TypeMapper = TypeMapper;

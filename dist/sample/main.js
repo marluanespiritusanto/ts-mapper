@@ -29,6 +29,8 @@ var Main = /** @class */ (function () {
         var mapper = new mapper_1.Mapper();
         var f = mapper.map(dog, new AnimalDto());
         var d = mapper.mapCollection([dog, dog], new AnimalDto());
+        var e = mapper.mapByConstructor(dog, AnimalDto);
+        var j = mapper.mapCollectionByConstructor([dog, dog], AnimalDto);
     };
     return Main;
 }());

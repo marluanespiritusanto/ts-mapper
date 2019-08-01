@@ -50,4 +50,14 @@ export class TypeMapper implements ITypeMapper {
   mapCollection<ISource, IDest>(sources: ISource[], destination: IDest): any {
     return sources.map((source: ISource) => this.map(source, destination));
   }
+
+  mapTo<TSource, TDest>(source: TSource, destConstructor: { new(): TDest; }): TDest {
+    const destination = new destConstructor();
+    return this.map<TSource, TDest>(source, destination);
+  }
+
+  mapCollectionTo<TSource, TDest>(sources: TSource[], destConstructor: { new(): TDest; }): TDest[] {
+    const destination = new destConstructor();
+    return sources.map<TDest>((source: TSource) => this.map(source, destination));
+  }
 }

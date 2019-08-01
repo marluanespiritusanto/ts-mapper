@@ -42,6 +42,9 @@ class Main {
 
       const f = mapper.map<Animal, AnimalDto>(dog, new AnimalDto());
       const d = mapper.mapCollection<Animal, AnimalDto>([dog, dog], new AnimalDto());
+
+      const e = mapper.mapTo(dog, AnimalDto);
+      const j = mapper.mapCollectionTo([dog, dog], AnimalDto);
    }
 }
 
