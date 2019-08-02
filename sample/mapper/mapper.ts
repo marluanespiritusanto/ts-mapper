@@ -1,8 +1,8 @@
-import { TypeMapper } from "../../src/typemapper";
+import { Mapper } from "../../src/mapper";
 import { Animal } from "../models/animal";
 import { AnimalDto } from "../models/animal.dto";
 
-export class Mapper extends TypeMapper {
+export class TypeMapper extends Mapper {
   constructor() {
     super();
     this.config();

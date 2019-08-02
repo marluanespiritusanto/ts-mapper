@@ -1,8 +1,9 @@
 import { Types } from "./enums/types.enum";
+import { IMapper } from "./interfaces/mapper.interface";
 import { Mapping } from "./mapping";
 import { toType } from "./utils";
 
-export class TypeMapper {
+export class Mapper implements IMapper{
   private mappings: any[] = [];
 
   public createMap<ISource, IDest>(source: new () => ISource, dest: new () => IDest): Mapping<ISource, IDest> {
@@ -18,22 +19,23 @@ export class TypeMapper {
 
     const { items } = mapping as Mapping<ISource, IDest>;
 
-    for (const item of items) {
-      const {
-        sourcePredicate,
-        destinationKey,
-        check = () => true,
-        type = Types.STRING
-      } = item;
+    Object.keys(items)
+      .forEach(destinationKey => {
+        const item = items[destinationKey];
 
-      const rawValue = sourcePredicate(source);
-
-      const checkResult: boolean = check(source, destination);
-      if (!checkResult) { continue; }
-
-      const typedValue = toType(type, rawValue);
-      destination[destinationKey] = typedValue;
-    }
+        const {
+          sourcePredicate,
+          check = () => true,
+          type = Types.STRING
+        } = item;
+    
+        const checkResult: boolean = check(source, destination);
+        if (!checkResult) { return; }
+  
+        const rawValue = sourcePredicate(source);
+        const typedValue = toType(type, rawValue);
+        destination[destinationKey] = typedValue;
+      });
 
     return destination;
   }

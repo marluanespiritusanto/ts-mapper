@@ -1,20 +1,33 @@
 import { Types } from "./enums/types.enum";
-import { IMapping, IMappingItem } from "./interfaces/typemapper.interface";
+import { IMapping } from "./interfaces/mapping.interface";
+import { IMappingItem } from "./interfaces/mappingItem.interface";
 import { MappingItem } from "./mappingItem";
 
 export class Mapping<S, D> implements IMapping<S, D> {
-  public items: IMappingItem<S, D>[] = [];
+  public items: { [key: string]:IMappingItem<S, D>} = {};
   public source: string;
   public dest: string;
+  private lastItemKey: string = '';
 
   constructor(source: new () => S, dest: new () => D) {
     this.source = source.name;
     this.dest = dest.name;
+
+    const s = new source();
+    const d = new dest() as any;
+
+    Object.keys(s)
+      .forEach(sourceKey => {
+
+        if(d[sourceKey] !== undefined) {
+          this.forMember(sourceKey as keyof D, (p:any) => p[sourceKey]);
+        }
+      });
   }
 
   public forMember<K extends keyof D>(destinationKey: K, sourcePredicate: (type: S) => any): IMapping<S, D> {
-    const item = new MappingItem(destinationKey as string, sourcePredicate);
-    this.addMapping(item);
+    this.items[destinationKey as string] = new MappingItem(destinationKey as string, sourcePredicate);
+    this.lastItemKey = destinationKey as string;
     return this;
   }
 
@@ -29,10 +42,6 @@ export class Mapping<S, D> implements IMapping<S, D> {
   }
 
   private get lastItem(): IMappingItem<S, D> {
-    return this.items[this.items.length - 1];
-  }
-
-  private addMapping(item: IMappingItem<S, D>): void {
-    this.items.push(item);
+    return this.items[this.lastItemKey];
   }
 }

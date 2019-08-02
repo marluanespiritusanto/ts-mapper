@@ -1,4 +1,4 @@
-import { IMappingItem } from "./interfaces/typemapper.interface";
+import { IMappingItem } from "./interfaces/mappingItem.interface";
 
 export class MappingItem<S,D> implements IMappingItem<S,D> {
     public sourcePredicate: (s: S) => any;
