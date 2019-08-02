@@ -9,8 +9,8 @@ class Main {
       human.lastname = "Haidei";
 
       const dog = new AnimalDto();
-      human.firstname = "Bob";
-      human.lastname = "Doggy";
+      dog.firstname = "Bob";
+      dog.lastname = "Doggy";
 
       const mapper = new Mapper();
 

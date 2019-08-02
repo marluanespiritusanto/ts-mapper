@@ -16,8 +16,7 @@ export class TypeMapper {
     const dst = destination.constructor.name;
     const [mapping] = this.mappings.filter(map => map.source === src && map.dest === dst);
 
-    const i = mapping as Mapping<ISource, IDest>;
-    const { items } = i;
+    const { items } = mapping as Mapping<ISource, IDest>;
 
     for (const item of items) {
       const {
@@ -45,7 +44,6 @@ export class TypeMapper {
   }
 
   public mapCollection<TSource, TDest>(sources: TSource[], destConstructor: new () => TDest): TDest[] {
-    const destination = new destConstructor();
-    return sources.map<TDest>((source: TSource) => this.mapTo(source, destination));
+    return sources.map<TDest>((source: TSource) => this.map(source, destConstructor));
   }
 }
