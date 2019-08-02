@@ -1,2 +1,5 @@
-core/
+src/
 sample/
+tsconfig.json
+tslint.json
+.prettierrc

@@ -4,12 +4,15 @@
   "description": "Object mapper for TypeScript",
   "scripts": {
     "build": "tsc",
-    "sample": "tsc && node ./dist/sample/main.js"
+    "sample": "tsc && node ./lib/sample/main.js",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
   },
   "author": "Marluan Espiritusanto",
-  "license": "ISC",
-  "main": "./dist/core/typemapper.js",
-  "types": "./dist/core/typemapper.d.ts",
+  "license": "MIT",
+  "files": ["lib/**/*"],
+  "main": "./lib/typemapper.js",
+  "types": "./lib/typemapper.d.ts",
   "directories": {
     "lib": "dist"
   },
@@ -20,5 +23,11 @@
     "automapper",
     "typemapper",
     "javascript"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  }
 }
