@@ -69,3 +69,4 @@ typings/
 
 # Build
 /lib
+/sample/dist
