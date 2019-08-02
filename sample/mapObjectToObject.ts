@@ -15,7 +15,7 @@ class Main {
       const mapper = new Mapper();
 
       // mapper.map() is mutable
-      const result = mapper.map<AnimalDto, Animal>(human, animal);
+      const result = mapper.mapTo<AnimalDto, Animal>(human, animal);
 
       console.log('result:', result);
       console.log('animal:', animal);

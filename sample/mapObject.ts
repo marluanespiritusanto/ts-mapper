@@ -10,7 +10,7 @@ class Main {
 
       const mapper = new Mapper();
 
-      const animal = mapper.mapTo(human, Animal);
+      const animal = mapper.map(human, Animal);
 
       console.log('animal', animal);
    }

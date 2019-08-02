@@ -3,14 +3,19 @@
   "version": "1.1.5",
   "description": "Object mapper for TypeScript",
   "scripts": {
-    "build": "tsc",
-    "sample": "tsc && node ./lib/sample/main.js",
+    "build": "rimraf ./lib && tsc",
+    "build:sample": "rimraf ./sample/dist && tsc -p ./sample/tsconfig.sample.json",
+    "run:sample1": "npm run build:sample && node ./sample/dist/sample/mapObject.js",
+    "run:sample2": "npm run build:sample && node ./sample/dist/sample/mapObjectToObject.js",
+    "run:sample3": "npm run build:sample && node ./sample/dist/sample/mapCollection.js",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
   },
   "author": "Marluan Espiritusanto",
   "license": "MIT",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "main": "./lib/typemapper.js",
   "types": "./lib/typemapper.d.ts",
   "directories": {
@@ -26,6 +31,7 @@
   ],
   "devDependencies": {
     "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"

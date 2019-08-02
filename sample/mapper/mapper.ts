@@ -9,9 +9,7 @@ export class Mapper extends TypeMapper {
   }
 
   private config(): void {
-    this.createMap<AnimalDto, Animal>("AnimalDto", "Animal").map(
-      p => `${p.firstname} ${p.lastname}`,
-      p => p.name
-    );
+    this.createMap(AnimalDto, Animal)
+      .forMember('name', p => `${p.firstname} ${p.lastname}`);
   }
 }

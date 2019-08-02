@@ -14,7 +14,7 @@ class Main {
 
       const mapper = new Mapper();
 
-      const animals = mapper.mapCollectionTo([human, dog], Animal);
+      const animals = mapper.mapCollection([human, dog], Animal);
 
       console.log('animals', animals);
    }

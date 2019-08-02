@@ -1,5 +1,5 @@
 export class AnimalDto {
-    public id: number;
-    public lastname: string;
-    public firstname: string;
+    public id: number = 0;
+    public lastname: string = '';
+    public firstname: string = '';
  }
